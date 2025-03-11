@@ -1,11 +1,20 @@
-import DateTimeDisplay from "./DateTimeDisplay";
+import DateDisplay from "./DateTimeDisplay";
 
-const MainCard = () => {
+// Definição do tipo das propriedades que o MainCard espera receber
+interface MainCardProps {
+  onAddTask: () => void;
+}
+
+const MainCard: React.FC<MainCardProps> = ({ onAddTask }) => {
   return (
-    <div style={styles.card}>
-      <DateTimeDisplay />
-      <h2>Lista de Tarefas</h2>
-      {/* Aqui vamos renderizar a lista de tarefas depois */}
+    <div style={styles.container}>
+      <div style={styles.card}>
+        <DateDisplay />
+        <h2>Lista de Tarefas</h2>
+        <button style={styles.addButton} onClick={onAddTask}>
+          + Adicionar Tarefa
+        </button>
+      </div>
     </div>
   );
 };
@@ -25,7 +34,16 @@ const styles = {
     textAlign: "center",
     maxWidth: "400px",
     backgroundColor: "#fff",
-    color: "#8A2BE2", // Violet color
+  },
+  addButton: {
+    marginTop: "10px",
+    padding: "10px",
+    fontSize: "16px",
+    cursor: "pointer",
+    border: "none",
+    borderRadius: "5px",
+    backgroundColor: "#007bff",
+    color: "white",
   },
 };
 
